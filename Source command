@@ -1,0 +1,77 @@
+In Tcl (Tool Command Language), the source command is used to execute a script from a file. It reads the contents of the specified file and evaluates it as a Tcl script in the current context.
+Syntax
+
+source <filename>
+
+    <filename>: The path to the Tcl script file you want to execute.
+
+How It Works
+
+    The script specified in <filename> is executed in the same interpreter context, meaning any variables or procedures defined in the file will be available after sourcing.
+    If the file contains an error, Tcl will report the error and stop execution.
+
+
+Examples
+1. Running a Tcl Script
+
+Assume you have a Tcl script file named my_script.tcl with the following content:
+
+# my_script.tcl
+set a 10
+puts "The value of a is $a"
+
+proc greet {name} {
+    puts "Hello, $name!"
+}
+
+Now, in the Tcl shell, you can source this file:
+
+source my_script.tcl
+Output:
+
+The value of a is 10
+
+After sourcing, you can also use the greet procedure defined in my_script.tcl:
+
+greet "India"
+
+Output:
+
+Hello, India!
+
+
+
+2. Sourcing a Script Inside Another Script
+
+You can also source a file inside another Tcl script.
+Main script (main.tcl)
+
+puts "Sourcing another script..."
+source my_script.tcl
+puts "Now we can use the procedure:"
+greet "User"
+
+Now, running main.tcl will output:
+
+Sourcing another script...
+The value of a is 10
+Now we can use the procedure:
+Hello, User!
+
+3. Handling Paths
+
+If the script is not in the current directory, provide the full or relative path:
+
+source /home/user/scripts/my_script.tcl
+
+or
+
+source ../scripts/my_script.tcl
+
+To make sure Tcl can find the script dynamically, you can use:
+
+set script_path "/home/user/scripts/my_script.tcl"
+source $script_path
+
+
+
