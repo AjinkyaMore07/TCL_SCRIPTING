@@ -1,0 +1,133 @@
+if-else Command in Tcl
+
+The if command in Tcl is used for conditional execution of code. It allows you to execute different blocks of code depending on whether a condition evaluates to true or false.
+Syntax
+
+if {condition} {
+    # Block of code if condition is true
+} elseif {another_condition} {
+    # Block of code if another_condition is true
+} else {
+    # Block of code if all conditions are false
+}
+
+    condition: A Boolean expression that evaluates to true (nonzero or non-empty string) or false (zero or empty string).
+    Braces {}: Used to enclose conditions and code blocks to improve readability and performance.
+
+
+Examples
+1. Simple if Statement
+
+set num 10
+
+if {$num > 5} {
+    puts "Number is greater than 5"
+}
+
+Output:
+
+Number is greater than 5
+
+2. Using if-else
+
+set num 3
+
+if {$num > 5} {
+    puts "Number is greater than 5"
+} else {
+    puts "Number is 5 or less"
+}
+
+Output:
+
+Number is 5 or less
+
+3. Using if-elseif-else
+
+set num 5
+
+if {$num > 10} {
+    puts "Number is greater than 10"
+} elseif {$num == 5} {
+    puts "Number is exactly 5"
+} else {
+    puts "Number is less than 10 and not 5"
+}
+
+Output:
+
+Number is exactly 5
+
+4. Checking for Even or Odd
+
+set num 8
+
+if {$num % 2 == 0} {
+    puts "$num is even"
+} else {
+    puts "$num is odd"
+}
+
+Output:
+
+8 is even
+
+5. String Comparison in if
+
+set name "Ajinkya"
+
+if {$name == "Ajinkya"} {
+    puts "Hello, Ajinkya!"
+} else {
+    puts "Unknown user"
+}
+
+Output:
+
+Hello, Ajinkya!
+
+6. Using if with Logical Operators
+
+set a 10
+set b 20
+
+if {$a > 5 && $b < 30} {
+    puts "Both conditions are true"
+} else {
+    puts "At least one condition is false"
+}
+
+Output:
+
+Both conditions are true
+
+✅ Logical Operators in Tcl
+
+    && → Logical AND
+    || → Logical OR
+    ! → Logical NOT
+
+Use Cases in Physical Design (ASIC)
+
+As a physical design engineer, you might use if-else in Tcl scripts to automate tool flows, check conditions, or control execution based on design constraints.
+Example: Checking Library Files in EDA Tool Setup
+
+set lib_path "/home/user/asic/libs"
+
+if {[file exists $lib_path]} {
+    puts "Library path exists: $lib_path"
+} else {
+    puts "Error: Library path does not exist!"
+    exit
+}
+
+Example: Skipping Steps Based on a Variable
+
+set run_floorplan 1
+
+if {$run_floorplan} {
+    puts "Running floorplanning step..."
+    source floorplan.tcl
+} else {
+    puts "Skipping floorplanning step."
+}
